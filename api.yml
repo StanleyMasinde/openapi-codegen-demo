@@ -10,6 +10,7 @@ paths:
   /posts:
     get:
       summary: Get a list of posts
+      operationId: get all posts
       responses:
         '200':
           description: Successful response
@@ -22,6 +23,7 @@ paths:
   /posts/{postId}:
     get:
       summary: Get a single post by ID
+      operationId: get post by id
       parameters:
         - name: postId
           in: path
