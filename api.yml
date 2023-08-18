@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  title: JSONPlaceholder Posts API
+  description: A sample API for retrieving posts
+  version: 1.0.0
+servers:
+  - url: https://jsonplaceholder.typicode.com
+    description: JSONPlaceholder API server
+paths:
+  /posts:
+    get:
+      summary: Get a list of posts
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Post'
+  /posts/{postId}:
+    get:
+      summary: Get a single post by ID
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          description: ID of the post to retrieve
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Post'
+components:
+  schemas:
+    Post:
+      type: object
+      properties:
+        userId:
+          type: integer
+          format: int64
+          description: The ID of the user who created the post
+        id:
+          type: integer
+          format: int64
+          description: The ID of the post
+        title:
+          type: string
+          description: The title of the post
+        body:
+          type: string
+          description: The content of the post
